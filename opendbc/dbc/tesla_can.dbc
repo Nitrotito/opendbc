@@ -913,6 +913,43 @@ BO_ 780 DriverSeat: 8 XXX
  SG_ occupancyStatus : 16|3@1+ (1,0) [0|7] "" XXX
  SG_ buckleStatus : 19|2@1+ (1,0) [0|3] "" XXX
 
+BO_ 813 IBST_info: 4 iBooster
+ SG_ IBST_infoIndex M : 0|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ IBST_buildType m10 : 8|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ IBST_componentId m10 : 48|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ IBST_pcbaId m11 : 16|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ IBST_assemblyId m11 : 24|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ IBST_usageId m11 : 32|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ IBST_udsProtocolVersion m20 : 8|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ IBST_bootloaderCrc m20 : 32|32@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ IBST_applicationCrc m13 : 32|32@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ IBST_variantCrc m22 : 32|32@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 861 IBST_dtcMatrix: 4 iBooster
+ SG_ IBST_dtcIndex M : 0|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ IBST_d000_bmsInitTestFail m0 : 8|2@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ IBST_d001_bmcSingleTransTest m0 : 10|2@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ IBST_d002_tle5012SsccrcFail m0 : 12|2@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ IBST_d003_tle5012Config m0 : 14|2@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ IBST_d004_deadlMonTaskx1Ovr m0 : 16|2@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ IBST_d005_ecuWdFltCntTstFls m0 : 18|2@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ IBST_d006_ecuWdScheduleTout m0 : 20|2@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ IBST_d007_ecuWdStarttestFls m0 : 22|2@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ IBST_d008_ecuWdStatusContErr m0 : 24|2@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ IBST_d009_netOvrvolt m0 : 26|2@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ IBST_d010_micSpiTout m0 : 28|2@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ IBST_d011_micSpiTransferErr m0 : 30|2@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ IBST_d012_netUndvolt m0 : 32|2@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ IBST_d013_xpassToutErr m0 : 34|2@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 925 IBST_status: 4 iBooster
+ SG_ IBST_brakeInputStroke : 20|10@1+ (0.05,-0.5) [0|0] "mm" Vector__XXX
+ SG_ IBST_iBoosterStatus : 17|3@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ IBST_pedalCalCurrentChecksum : 0|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ IBST_pedalCalCurrentCounter : 8|4@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ IBST_pedalCalCurrentCurve : 12|4@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ IBST_pedalCalTxEnabled : 16|1@1+ (1,0) [0|0] "" Vector__XXX
+
 VAL_ 3 StW_Angl 16383 "SNA" ;
 VAL_ 3 StW_AnglSens_Id 2 "MUST" 0 "PSBL" 1 "SELF" ;
 VAL_ 3 StW_AnglSens_Stat 2 "ERR" 3 "ERR_INI" 1 "INI" 0 "OK" ;

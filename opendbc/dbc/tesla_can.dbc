@@ -809,6 +809,48 @@ BO_ 938 DAS_telemetryM: 8 XXX
  SG_ DAS_stopSignCIPVDistance m2 : 42|6@1+ (0.5,0) [0|31.5] "m" XXX
  SG_ DAS_stopSignHostAccel m2 : 48|10@1+ (0.01,-5) [-5|5.23] "m/s^2" XXX
 
+BO_ 937 DAS_telemetry: 8 XXX
+ SG_ DAS_telemetryMultiplexer : 0|8@1+ (1,0) [0|0] "" XXX
+ SG_ DAS_telLeftLaneType : 8|3@1+ (1,0) [0|0] "" XXX
+ SG_ DAS_telRightLaneType : 11|3@1+ (1,0) [0|0] "" XXX
+ SG_ DAS_telLeftMarkerQuality : 14|2@1+ (1,0) [0|0] "" XXX
+ SG_ DAS_telRightMarkerQuality : 16|2@1+ (1,0) [0|0] "" XXX
+ SG_ DAS_telLeftMarkerColor : 18|2@1+ (1,0) [0|0] "" XXX
+ SG_ DAS_telRightMarkerColor : 20|2@1+ (1,0) [0|0] "" XXX
+ SG_ DAS_telLeftLaneCrossing : 22|1@1+ (1,0) [0|0] "" XXX
+ SG_ DAS_telRightLaneCrossing : 23|1@1+ (1,0) [0|0] "" XXX
+
+BO_ 938 DAS_telemetryM: 8 XXX
+ SG_ DAS_telemetryMultiplexerM M : 0|8@1+ (1,0) [0|0] "" XXX
+ SG_ DAS_telLeftLaneType m0 : 8|3@1+ (1,0) [0|0] "" XXX
+ SG_ DAS_telRightLaneType m0 : 11|3@1+ (1,0) [0|0] "" XXX
+ SG_ DAS_telLeftMarkerQuality m0 : 14|2@1+ (1,0) [0|0] "" XXX
+ SG_ DAS_telRightMarkerQuality m0 : 16|2@1+ (1,0) [0|0] "" XXX
+ SG_ DAS_telLeftMarkerColor m0 : 18|2@1+ (1,0) [0|0] "" XXX
+ SG_ DAS_telRightMarkerColor m0 : 20|2@1+ (1,0) [0|0] "" XXX
+ SG_ DAS_telLeftLaneCrossing m0 : 22|1@1+ (1,0) [0|0] "" XXX
+ SG_ DAS_telRightLaneCrossing m0 : 23|1@1+ (1,0) [0|0] "" XXX
+ SG_ DAS_MCPObserved m1 : 8|1@1+ (1,0) [0|1] "" XXX
+ SG_ DAS_accReengaged m1 : 9|1@1+ (1,0) [0|1] "" XXX
+ SG_ DAS_pedestrianInFOVBeforeIntr m1 : 10|1@1+ (1,0) [0|1] "" XXX
+ SG_ DAS_pedestrianInFOVAfterIntr m1 : 11|1@1+ (1,0) [0|1] "" XXX
+ SG_ DAS_camFreeSpaceBeforeIntr m1 : 12|1@1+ (1,0) [0|1] "" XXX
+ SG_ DAS_camFreeSpaceAfterIntr m1 : 13|1@1+ (1,0) [0|1] "" XXX
+ SG_ DAS_timeOfIntervention m1 : 14|6@1+ (0.25,0) [0|16] "s" XXX
+ SG_ DAS_timeOfFirstPedestrian m1 : 20|6@1+ (0.25,0) [0|16] "s" XXX
+ SG_ DAS_timeOfACCReengaging m1 : 26|6@1+ (0.25,0) [0|16] "s" XXX
+ SG_ DAS_durationOfPrevACCStandstill m1 : 32|6@1+ (0.5,0) [0|30] "s" XXX
+ SG_ DAS_maxAbsSteeringWheelAngle m1 : 38|7@1+ (2,0) [0|256] "degrees" XXX
+ SG_ DAS_targetRelvelAtIntervention m1 : 45|6@1+ (0.25,-2) [-2|13.5] "m/s" XXX
+ SG_ DAS_targetDistAtIntervention m1 : 51|6@1+ (0.5,0) [0|32] "m" XXX
+ SG_ DAS_egoSpeedAtIntervention m1 : 57|6@1+ (0.5,0) [0|32] "m/s" XXX
+ SG_ DAS_stopSignLongitudinalDist m2 : 8|10@1+ (0.1,0) [0|102.2] "m" XXX
+ SG_ DAS_stopSignLateralDist m2 : 18|8@1+ (0.25,-32) [-32|31.5] "m" XXX
+ SG_ DAS_stopSignHeight m2 : 26|6@1+ (0.1,0) [0|6.2] "m" XXX
+ SG_ DAS_stopSignStopLineDistance m2 : 32|10@1+ (0.1,-20) [-20|82.2] "m" XXX
+ SG_ DAS_stopSignCIPVDistance m2 : 42|6@1+ (0.5,0) [0|31.5] "m" XXX
+ SG_ DAS_stopSignHostAccel m2 : 48|10@1+ (0.01,-5) [-5|5.23] "m/s^2" XXX
+
 BO_ 1001 DAS_bodyControls: 8 XXX
  SG_ DAS_headlightRequest : 0|2@1+ (1,0) [0|3] "" XXX
  SG_ DAS_hazardLightRequest : 2|2@1+ (1,0) [0|3] "" XXX

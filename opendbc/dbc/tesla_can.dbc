@@ -744,6 +744,21 @@ BO_ 1001 DAS_bodyControls: 8 XXX
  SG_ DAS_bodyControlsCounter : 52|4@1+ (1,0) [0|15] "" XXX
  SG_ DAS_bodyControlsChecksum : 56|8@1+ (1,0) [0|255] "" XXX
 
+BO_ 777 DAS_object: 8 XXX
+ SG_ DAS_objectId : 0|3@1+ (1,0) [0|7] "" XXX
+ SG_ DAS_leadVehType : 3|3@1+ (1,0) [0|7] "" XXX
+ SG_ DAS_leadVehRelevantForControl : 7|1@1+ (1,0) [0|1] "" XXX
+ SG_ DAS_leadVehDx : 8|8@1+ (0.5,0) [0|127] "m" XXX
+ SG_ DAS_leadVehVxRel : 16|4@1+ (4,-30) [-30|26] "m/s" XXX
+ SG_ DAS_leadVehDy : 20|7@1+ (0.35,-22.05) [-22.05|22.4] "m" XXX
+ SG_ DAS_leadVehId : 27|7@1+ (1,0) [0|126] "" XXX
+ SG_ DAS_leadVeh2Type : 34|3@1+ (1,0) [0|7] "" XXX
+ SG_ DAS_leadVeh2RelevantForControl : 38|1@1+ (1,0) [0|1] "" XXX
+ SG_ DAS_leadVeh2Dx : 39|8@1+ (0.5,0) [0|127] "m" XXX
+ SG_ DAS_leadVeh2VxRel : 47|4@1+ (4,-30) [-30|26] "m/s" XXX
+ SG_ DAS_leadVeh2Dy : 51|7@1+ (0.35,-22.05) [-22.05|22.4] "m" XXX
+ SG_ DAS_leadVeh2Id : 58|6@1+ (1,0) [0|63] "" XXX
+
 BO_ 780 DriverSeat: 8 XXX
  SG_ occupancyStatus : 16|3@1+ (1,0) [0|7] "" XXX
  SG_ buckleStatus : 19|2@1+ (1,0) [0|3] "" XXX

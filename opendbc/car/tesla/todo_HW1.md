@@ -464,6 +464,49 @@ Tesla HW1 (Model S/X 2014-16) is the least capable Tesla variant for openpilot i
 
 ---
 
+## SunnyPilot-Specific Features (Not in Baseline openpilot)
+
+### 41. 3-Finger Infotainment Touch Press (HAS_VEHICLE_BUS)
+- **Priority:** MEDIUM
+- **Files:** `sunnypilot/car/tesla/carstate_ext.py:30`, `sunnypilot/car/tesla/values.py:11`
+- **Issue:** SunnyPilot detects 3-finger touch on the infotainment screen to toggle LKAS via `UI_status2.UI_activeTouchPoints` on the vehicle bus. HW1 may not have a separate vehicle bus or this signal.
+- **TODO:**
+  - [ ] Determine if HW1 has a vehicle CAN bus (separate from chassis/party bus)
+  - [ ] If yes, verify `UI_status2` (0x3E8, ID 1000) exists and has `UI_activeTouchPoints`
+  - [ ] Enable `HAS_VEHICLE_BUS` flag for HW1 platforms if supported
+  - [ ] Test 3-finger touch detection on HW1 hardware
+
+### 42. Cooperative Steering (COOP_STEERING)
+- **Priority:** LOW
+- **Files:** `sunnypilot/car/tesla/coop_steering.py`, `sunnypilot/car/tesla/values.py:12`
+- **Issue:** SunnyPilot allows driver to override steering without disengaging openpilot (coop steering mode). Needs HW1-specific testing since HW1 uses angle-based steering (different behavior from torque-based).
+- **TODO:**
+  - [ ] Test coop steering on HW1 with angle-based steering control
+  - [ ] Verify driver override detection works correctly (steering angle delta vs torque)
+  - [ ] Tune override thresholds for HW1 if needed
+  - [ ] Enable `COOP_STEERING` flag for HW1 platforms if tested successfully
+
+### 43. Speed Limit Display from DAS_status
+- **Priority:** MEDIUM
+- **Files:** `sunnypilot/car/tesla/carstate_ext.py:38-49`, `tesla_can.dbc`
+- **Issue:** SunnyPilot reads `DAS_status.DAS_fusedSpeedLimit` with unit detection from `DI_state.DI_speedUnits`. Requires both messages to exist and be correctly parsed on HW1.
+- **TODO:**
+  - [ ] Verify `DAS_status` (ID 921) and `DI_state` (ID 872) exist on HW1 bus
+  - [ ] Confirm `DI_speedUnits` signal is at the correct bit position (verify xnor layout vs Unity)
+  - [ ] Test speed limit display across speed ranges and unit changes (KPH/MPH)
+  - [ ] Add speed limit source indicator (camera vs map vs none) if available
+
+### 44. Extended FW Fingerprints
+- **Priority:** LOW
+- **Files:** `sunnypilot/car/tesla/fingerprints_ext.py`
+- **Issue:** SunnyPilot maintains extended FW version fingerprints. HW1 firmware versions may differ from HW2/HW3 and need their own entries.
+- **TODO:**
+  - [ ] Collect HW1 firmware versions from real vehicles
+  - [ ] Add HW1-specific FW fingerprints to `fingerprints_ext.py`
+  - [ ] Verify HW1 fingerprint matching works end-to-end
+
+---
+
 ## Quick Reference: File Locations
 
 | File | Purpose | Key Lines |
@@ -517,6 +560,21 @@ Tesla HW1 (Model S/X 2014-16) is the least capable Tesla variant for openpilot i
 - Longitudinal actuator delay tuning
 - Gap adjust button
 - HUD control
+
+### Hyundai Has That Tesla HW1 Doesn't:
+- **Cluster/HUD display control** — Hyundai sends lane lines, warnings, and system state icons to the cluster via `LKAS11`/`LFAHDA`. Tesla HW1 sends nothing to its cluster.
+- **AEB passthrough (ESCC)** — Hyundai forwards stock radar AEB/FCW commands through `SCC12` while OP controls longitudinal. Tesla loses stock AEB when OP is active.
+- **Speed limit from navigation + camera** — Hyundai reads `SpeedLim_Nav_Clu` (nav) + `CF_Lkas_TsrSpeed_Display_Clu` (camera). Tesla has no speed limit reading at all.
+- **Brake hold detection** — Hyundai reads `AVH_LAMP` (Auto Vehicle Hold). Tesla has no brake hold signal parsed.
+- **Per-platform longitudinal tuning** — Hyundai has dynamic/predictive PID configs per platform. Tesla uses global hardcoded accel/jerk limits.
+- **Checksum validation** — Hyundai supports CRC8 and 6B checksum schemes. Tesla HW1 ignores all checksums.
+- **Multiple gas pedal types** — Hyundai detects EV/hybrid/ICE/FCEV gas signals. Tesla is always EV (single path).
+- **SCC architecture detection** — Hyundai adapts to radar SCC / camera SCC / CAN FD variants. Tesla has one fixed architecture.
+- **Steering torque control** — Hyundai uses torque-based LKAS with per-platform torque limits. Tesla uses angle-based steering (single global limit).
+- **Non-SCC car support** — Hyundai supports cars without factory ACC. All Teslas have ACC.
+- **Cancel button delay** — Hyundai delays cancel on brake press to avoid "SCC Conditions Not Met". Tesla has no equivalent.
+- **ADAS ECU keep-alive** — Hyundai sends periodic messages to disabled ADAS ECU. Tesla has no ADAS ECU to manage.
+- **Steering fault angle protection** — Hyundai limits MAX_ANGLE to 85° with consecutive frame tracking. Tesla uses model-based lateral acceleration limit.
 
 ---
 

@@ -578,6 +578,26 @@ Tesla HW1 (Model S/X 2014-16) is the least capable Tesla variant for openpilot i
 
 ---
 
+## DBC Merge Reference (`dbc-merge` branch)
+
+The `opendbc_repo` branch `dbc-merge` adds 9 Unity messages to xnor's `tesla_can.dbc`. Each commit maps to items in this TODO:
+
+| Commit | Message(s) | Resolves / Relates To |
+|--------|-----------|----------------------|
+| `f223c78e` | ESP_145h (ID 325) | Items 2, 3 — brake pressure, standstill, wheel speed QF |
+| `a3530afc` | ESP_ACC (ID 293) | Items 2, 3 — long/lat acceleration from ESP |
+| `37382d96` | DAS_object (ID 777) | Item 17 — lead vehicle tracking for IC display |
+| `ecf4a9eb` | GTW_ESP1 (ID 520) | Items 2, 3 — ESP configuration, hill start assist |
+| `e01fa70b` | DAS_pscControl (ID 537) | Items 1, 38 — autopark state, EAC state |
+| `be5a9541` | DAS_telemetry/DAS_telemetryM (IDs 937/938) | Items 14, 15 — lane telemetry, LDW |
+| `c699ddd6` | PARK_status2 (ID 782) | Items 38, 39 — ultrasonic sensor status, SDI |
+| `fe8cf0f0` | IBST_info/IBST_dtcMatrix/IBST_status (IDs 813/861/925) | Items 2, 3 — iBooster diagnostics |
+| `b8dfef39` | CM_ conflict annotations | Items 5, 6 — documents xnor-vs-Unity bit layout diffs |
+
+**Remaining:** Signal parsing (carstate.py), HUD implementation (carcontroller.py), safety layer updates (tesla_legacy.h), and hardware verification still needed.
+
+---
+
 ## Notes
 
 - HW1 uses `teslaLegacy` safety model with `FLAG_HW1`

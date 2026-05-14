@@ -64,6 +64,11 @@ VAL_TABLE_ DI_state 4 "DI_STATE_ENABLE" 3 "DI_STATE_FAULT" 2 "DI_STATE_CLEAR_FAU
 VAL_TABLE_ DI_velocityEstimatorState 4 "VE_STATE_BACKUP_MOTOR" 3 "VE_STATE_BACKUP_WHEELS_B" 2 "VE_STATE_BACKUP_WHEELS_A" 1 "VE_STATE_WHEELS_NORMAL" 0 "VE_STATE_NOT_INITIALIZED" ;
 
 
+BO_ 637 APS_eacMonitor: 3 APS
+ SG_ APS_eacAllow : 0|2@1+ (1,0) [0|0] "" EPAS3P
+ SG_ APS_eacMonitorCounter : 8|4@1+ (1,0) [0|0] "" EPAS3P
+ SG_ APS_eacMonitorChecksum : 16|8@1+ (1,0) [0|0] "" EPAS3P
+
 BO_ 1160 DAS_steeringControl: 4 NEO
  SG_ DAS_steeringControlType : 23|2@0+ (1,0) [0|0] "" EPAS
  SG_ DAS_steeringControlChecksum : 31|8@0+ (1,0) [0|0] "" EPAS

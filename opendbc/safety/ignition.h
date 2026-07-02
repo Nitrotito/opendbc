@@ -9,8 +9,9 @@ bool ignition_can = false;
 uint32_t ignition_can_cnt = 0U;
 
 void ignition_can_hook(const CANPacket_t *msg) {
+  int len = GET_LEN(msg);
+
   if (msg->bus == 0U) {
-    int len = GET_LEN(msg);
 
     // GM exception
     if ((msg->addr == 0x1F1U) && (len == 8)) {
@@ -68,10 +69,22 @@ void ignition_can_hook(const CANPacket_t *msg) {
     }
   }
 
-  // TODO: this is too loose, Teslas have 0x222
-  // body v2 exception
-  // if (((msg->bus == 0U) || (msg->bus == 2U)) && (msg->addr == 0x222U)) {
-  //   ignition_can = true;
-  //   ignition_can_cnt = 0U;
-  // }
+  // Tesla Model S/X HW1 (AP1) exception — GTW_status on bus 0 or bus 1
+  if (((msg->bus == 0U) || (msg->bus == 1U)) && (msg->addr == 0x348U) && (len == 8)) {
+    int counter = msg->data[6] & 0xFU;
+
+    static int prev_counter_tesla_legacy = -1;
+    if ((counter == ((prev_counter_tesla_legacy + 1) % 16)) && (prev_counter_tesla_legacy != -1)) {
+      // GTW_status->GTW_stateDriving
+      ignition_can = (msg->data[0] & 0x1U) != 0U;
+      ignition_can_cnt = 0U;
+    }
+    prev_counter_tesla_legacy = counter;
+  }
+
+  // Tesla body exception — bus 0 or bus 2
+  if (((msg->bus == 0U) || (msg->bus == 2U)) && (msg->addr == 0x201U)) {
+    ignition_can = true;
+    ignition_can_cnt = 0U;
+  }
 }

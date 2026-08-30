@@ -44,7 +44,7 @@ COOP_TORQUE_DEADBAND = 0.5  # Nm, above the resting noise floor (measured: <0.4 
 # (median 2.67). NOT angle rate, NOT torsion safety. So the usable band ends around 2 Nm and
 # asking for full assist above that would put the top of the curve out of reach -- the exact
 # problem v1 was retuned for. Hence 2.0, not 2.5.
-COOP_TORQUE_MAX = 2.0       # Nm, full assist here
+COOP_TORQUE_MAX = 1.5       # Nm, full assist here
 COOP_MAX_LAT_ACCEL = 1.0    # m/s2 at full push (dzid26 uses 2.0 on the 3/Y; we start at half)
 COOP_MAX_OFFSET = 15.0      # deg of steering wheel, hard ceiling
 COOP_OFFSET_RATE = 0.4      # deg per 25 Hz frame, i.e. 10 deg/s

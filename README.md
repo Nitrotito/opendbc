@@ -2,8 +2,8 @@
 
 **This is not stock opendbc.** It is a personal fork, maintained for a single car.
 Live branch: `hw1`. It is used as a submodule by
-[Nitrotito/sunnypilot](https://github.com/Nitrotito/sunnypilot/tree/hw1-magyar-merge-20260816),
-branch `hw1-magyar-merge-20260816`, which is what the device runs.
+[Nitrotito/sunnypilot](https://github.com/Nitrotito/sunnypilot/tree/hw1-magyar),
+branch `hw1-magyar`, which is what the device runs.
 
 This repository holds the **car side** of the port: which CAN messages carry speed and steering
 angle, what to send to steer, and the safety limits that constrain it. The user interface, the
@@ -23,8 +23,8 @@ software: the driver stays responsible at all times.
 
 **Ez nem a gyári opendbc.** Személyes fork, egyetlen autóhoz karbantartva.
 Az éles ág: `hw1`. Almodulként használja a
-[Nitrotito/sunnypilot](https://github.com/Nitrotito/sunnypilot/tree/hw1-magyar-merge-20260816)
-`hw1-magyar-merge-20260816` ága, és a készülék azt futtatja.
+[Nitrotito/sunnypilot](https://github.com/Nitrotito/sunnypilot/tree/hw1-magyar)
+`hw1-magyar` ága, és a készülék azt futtatja.
 
 Ebben a repóban a port **autó-oldala** él: melyik CAN-üzenet hordozza a sebességet és a
 kormányszöget, mit kell küldeni a kormányzáshoz, és milyen biztonsági határok szorítják meg. A
@@ -38,6 +38,19 @@ Amit ez a fork hozzátesz az opendbc-hez, az xnor-tech portra építve:
 
 Nincs hozzá támogatás, nincs garancia, és nincs ígéret arra, hogy a te autódon működik. Ez
 vezetéstámogató szoftver: a felelősség végig a vezetőé.
+
+---
+
+## Supported hardware / Támogatott eszköz
+
+Device: comma 4 (`mici`). Car: Tesla Model S with **AP1 / Hardware 1** (MCU1). Nothing else.
+This repository is only useful together with
+[Nitrotito/sunnypilot](https://github.com/Nitrotito/sunnypilot), branch `hw1-magyar`, which is
+where the installation instructions live.
+
+Eszköz: comma 4 (`mici`). Autó: Tesla Model S **AP1 / Hardware 1** (MCU1). Más nem. Ez a repó
+önmagában nem használható: a [Nitrotito/sunnypilot](https://github.com/Nitrotito/sunnypilot)
+`hw1-magyar` ágával együtt működik, és a telepítés leírása is ott van.
 
 ---
 

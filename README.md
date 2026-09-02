@@ -1,4 +1,45 @@
-> **Fork notice:** This repository is a fork of [commaai/opendbc](https://github.com/commaai/opendbc), used as a submodule by [sunnypilot](https://github.com/sunnyhaibin/sunnypilot). Built for the purpose of adding **Tesla Hardware 1** support.
+# Nitrotito fork: Tesla Model S AP1 (HW1) car support
+
+**This is not stock opendbc.** It is a personal fork, maintained for a single car.
+Live branch: `hw1`. It is used as a submodule by
+[Nitrotito/sunnypilot](https://github.com/Nitrotito/sunnypilot/tree/hw1-magyar-merge-20260816),
+branch `hw1-magyar-merge-20260816`, which is what the device runs.
+
+This repository holds the **car side** of the port: which CAN messages carry speed and steering
+angle, what to send to steer, and the safety limits that constrain it. The user interface, the
+Hungarian translation and the path planning live in the other fork.
+
+What this fork adds on top of opendbc, built on the xnor-tech port:
+
+- **Tesla Model S with AP1 (HW1)** support in `opendbc/car/tesla/` and the matching safety mode.
+- **Cooperative steering** tuning for HW1: full assist from 1.5 Nm of driver torque.
+
+No support, no warranty, and no promise that it works on your car. This is driver assistance
+software: the driver stays responsible at all times.
+
+---
+
+# Nitrotito fork: Tesla Model S AP1 (HW1) autó-támogatás
+
+**Ez nem a gyári opendbc.** Személyes fork, egyetlen autóhoz karbantartva.
+Az éles ág: `hw1`. Almodulként használja a
+[Nitrotito/sunnypilot](https://github.com/Nitrotito/sunnypilot/tree/hw1-magyar-merge-20260816)
+`hw1-magyar-merge-20260816` ága, és a készülék azt futtatja.
+
+Ebben a repóban a port **autó-oldala** él: melyik CAN-üzenet hordozza a sebességet és a
+kormányszöget, mit kell küldeni a kormányzáshoz, és milyen biztonsági határok szorítják meg. A
+felhasználói felület, a magyarítás és az útvonaltervezés a másik forkban van.
+
+Amit ez a fork hozzátesz az opendbc-hez, az xnor-tech portra építve:
+
+- **Tesla Model S AP1 (HW1) támogatás** az `opendbc/car/tesla/` alatt, a hozzá tartozó biztonsági
+  móddal együtt.
+- **Együttműködő kormányzás** hangolása HW1-re: teljes rásegítés 1,5 Nm vezetői nyomatéktól.
+
+Nincs hozzá támogatás, nincs garancia, és nincs ígéret arra, hogy a te autódon működik. Ez
+vezetéstámogató szoftver: a felelősség végig a vezetőé.
+
+---
 
 <div align="center" style="text-align: center;">
 

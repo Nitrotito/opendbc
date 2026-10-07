@@ -332,7 +332,7 @@
 |Tesla|Model S (with HW4) 2024|All|[Upstream](#upstream)|
 |Tesla|Model X (with HW1) 2014-16|All|[Upstream](#upstream)|
 |Tesla|Model X (with HW2) 2016-19|All|[Upstream](#upstream)|
-|Tesla|Model X (with HW4) 2024|All|[Dashcam mode](#dashcam)|
+|Tesla|Model X (with HW4) 2024|All|[Upstream](#upstream)|
 |Tesla|Model Y (with HW3) 2020-24|All|[Upstream](#upstream)|
 |Tesla|Model Y (with HW4) 2023-25|All|[Upstream](#upstream)|
 |Toyota|Alphard 2019-20|All|[Upstream](#upstream)|

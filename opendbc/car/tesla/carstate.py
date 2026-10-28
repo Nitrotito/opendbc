@@ -240,6 +240,13 @@ class CarState(CarStateBase, CarStateExt):
       ret.leftBlinker = cp_chassis.vl["GTW_carState"]["BC_indicatorLStatus"] == 1
       ret.rightBlinker = cp_chassis.vl["GTW_carState"]["BC_indicatorRStatus"] == 1
 
+    # Blindspot (HW1): AutopilotStatus (0x399) on the autopilot party bus carries the rear blind spot warning.
+    # 3 = SNA (seen at start-up and shut-down) is not a warning; 1 and 2 are the two warning levels.
+    if self.CP.carFingerprint in (CAR.TESLA_MODEL_S_HW1, CAR.TESLA_MODEL_X_HW1):
+      autopilot_status = cp_ap_party.vl["AutopilotStatus"]
+      ret.leftBlindspot = autopilot_status["DAS_blindSpotRearLeft"] in (1, 2)
+      ret.rightBlindspot = autopilot_status["DAS_blindSpotRearRight"] in (1, 2)
+
     # Seatbelt
     if self.CP.flags & TeslaLegacyParams.NO_SDM1:
       ret.seatbeltUnlatched = cp_chassis.vl["RCM_status"]["RCM_buckleDriverStatus"] != 1
@@ -264,7 +271,10 @@ class CarState(CarStateBase, CarStateExt):
     if CP.carFingerprint in LEGACY_CARS:
       return {
         Bus.party: CANParser(DBC[CP.carFingerprint][Bus.party], [], CANBUS.party),
-        Bus.ap_party: CANParser(DBC[CP.carFingerprint][Bus.party], [], CANBUS.autopilot_party),
+        # HW1 blind spot source; optional (~2 Hz), so it must never affect CAN validity. Only tesla_can has it.
+        Bus.ap_party: CANParser(DBC[CP.carFingerprint][Bus.party],
+                                [("AutopilotStatus", float('nan'))] if CP.carFingerprint in (CAR.TESLA_MODEL_S_HW1, CAR.TESLA_MODEL_X_HW1) else [],
+                                CANBUS.autopilot_party),
         Bus.pt: CANParser(DBC[CP.carFingerprint][Bus.pt], [], CANBUS.powertrain),
         Bus.ap_pt: CANParser(DBC[CP.carFingerprint][Bus.pt], [], CANBUS.autopilot_powertrain),
         Bus.chassis: CANParser(DBC[CP.carFingerprint][Bus.chassis], [], CANBUS.chassis if CP.carFingerprint == CAR.TESLA_MODEL_S_HW3 else CANBUS.party),
